@@ -16,19 +16,22 @@ export class ApiService {
             {
                 id: "1",
                 content: 'manger une pizza',
-                done: false
+                done: false,
+                description: "uummm c'est bon!!" 
             },
             
             {
                 id: "2",
                 content: 'Aller à la plage',
-                done: false
+                done: false,
+                description: "bon!!" 
             },
 
             {
                 id: "3",
                 content: 'Faire du ski',
-                done: false
+                done: false,
+                description: "c'est bon!!" 
             }
         ])
     )
