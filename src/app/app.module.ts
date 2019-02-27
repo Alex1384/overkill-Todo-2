@@ -1,3 +1,5 @@
+import { TodosEffects } from './shared/store/todos.effects';
+import { reducers } from './shared/store/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './shared/services/api.service';
 import { HttpModule } from '@angular/http'
@@ -9,6 +11,11 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@angular/flex-layout';
+import { StoreModule } from '../../node_modules/@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '../../node_modules/@ngrx/effects';
+import { RouterModule } from '../../node_modules/@angular/router';
+import { StoreRouterConnectingModule } from '../../node_modules/@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -21,7 +28,29 @@ import { CoreModule } from '@angular/flex-layout';
     FormsModule,
     LayoutModule,
     CoreModule,
-    HttpModule
+    HttpModule,
+
+    StoreModule.forRoot(reducers), 
+     StoreDevtoolsModule.instrument({
+      name: 'to do'
+    }),
+    EffectsModule.forRoot([TodosEffects]),
+    RouterModule.forRoot([
+      {
+        path: 'todo', component: TodoListComponent
+      },
+      {
+        path: '', redirectTo: 'todo', pathMatch: 'full',
+      },
+      {
+        path: 'todo/:id', component: TodoListComponent
+      }
+    ]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'
+    })
+    
+  
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

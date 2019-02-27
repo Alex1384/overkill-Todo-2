@@ -9,7 +9,7 @@
             </mat-card-actions> 
       <mat-card-content>
         <mat-selection-list>
-            <mat-list-option *ngFor= "let todo of todos$ | async; let i = index" (click)="toggleTodo(i)">
+            <mat-list-option [routerLink]="['/todo' , todo.id]" routerLinkActive = "active" *ngFor= "let todo of todos$ | async; let i = index" (click)="toggleTodo(i)">
               <span fxLayout="row" >{{todo.content}}</span>
             </mat-list-option>
         </mat-selection-list>
