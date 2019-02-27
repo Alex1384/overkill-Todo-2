@@ -10,23 +10,27 @@ export class ApiService {
 
   constructor() { }
 
-  public todos$: BehaviorSubject<Todo[]> = new BehaviorSubject([
-    {
-        id: "1",
-        content: 'manger une pizza',
-        done: false
-    },
-    
-    {
-        id: "2",
-        content: 'Aller à la plage',
-        done: false
-    },
+  public getTodos(): Observable<Todo[]> {
+    return timer(2000).pipe(
+                map( () => [
+            {
+                id: "1",
+                content: 'manger une pizza',
+                done: false
+            },
+            
+            {
+                id: "2",
+                content: 'Aller à la plage',
+                done: false
+            },
 
-    {
-        id: "3",
-        content: 'Faire du ski',
-        done: false
-    },
-  ]);
+            {
+                id: "3",
+                content: 'Faire du ski',
+                done: false
+            }
+        ])
+    )
+  }
 }
