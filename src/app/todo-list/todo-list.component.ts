@@ -17,7 +17,10 @@ export class TodoListComponent implements OnInit {
   public todos$: Observable<Todo[]> = this.store.pipe(select(todoListSelector));
   
   public selectedTodo$: Observable<Todo> = this.store.pipe(select(selectedTodoSelector));
-  constructor(private apiService: ApiService, private store: Store<State>) { }
+  constructor(private store: Store<State>) { }
+
+  public selectedTodo: Todo;
+  public content: string;
 
   ngOnInit() {
     this.store.dispatch(new todosAction.FetchTodo());
@@ -25,6 +28,15 @@ export class TodoListComponent implements OnInit {
 
   public toggleTodo(index: number) {
     this.store.dispatch(new todosAction.ToggleTodo(index));
-    }
+  }
+
+  public addTodo() {
+    this.store.dispatch(new todosAction.CreateTodo({ content: this.content, done: false}));
+    this.content = "";
+  }
+
+  public deleteTodo(index: number) {
+    this.store.dispatch(new todosAction.DeleteTodo(index));
+  }
 
 }

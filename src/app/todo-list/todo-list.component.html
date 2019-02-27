@@ -1,18 +1,38 @@
-  <mat-toolbar color="primary" fxLayout= "row" fxLayoutAlign ="start center" FxLayoutGap= "15px">
-    <span fxFlex= "auto">OverKill Todos</span>
-    </mat-toolbar>
+<mat-toolbar color="primary" fxLayout= "row" fxLayoutAlign ="start center" FxLayoutGap= "15px">
+  <span fxFlex= "auto">OverKill Todos</span>
+  </mat-toolbar>
 
-  <div fxLayoutAlign= "center center" fxLayoutGap="15px">
-    <mat-card>
-          <mat-card-header fxLayoutAlign = "center center">ToDoList</mat-card-header>
-            <mat-card-actions fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
-            </mat-card-actions> 
-      <mat-card-content>
-        <mat-selection-list>
-            <mat-list-option [routerLink]="['/todo' , todo.id]" routerLinkActive = "active" *ngFor= "let todo of todos$ | async; let i = index" (click)="toggleTodo(i)">
-              <span fxLayout="row" >{{todo.content}}</span>
-            </mat-list-option>
-        </mat-selection-list>
-      </mat-card-content>
-    </mat-card>
+<div fxLayoutAlign= "center center" fxLayoutGap="15px">
+      <mat-card>
+        <mat-card-header fxLayoutAlign = "center center">ToDoList</mat-card-header>
+          <mat-card-actions fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+            <mat-form-field>
+              <input (keydown.enter)= "addTodo()"[(ngModel)]= "content" matInput placeholder= "New Todo" type="text">
+            </mat-form-field>
+             <button mat-raised-button color="accent" (click)= "addTodo()">AddToList</button>
+          </mat-card-actions>
+            <mat-card-content>
+              <mat-selection-list>
+                <mat-list-option [routerLink]="['/todo' , todo.id]" 
+                           routerLinkActive = "active"  
+                           *ngFor= "let todo of todos$ | async; let i = index" 
+                           (click)="toggleTodo(i)">
+                          <span fxLayout="row" >{{todo.content}}
+                              <i class= "material-icons" (click)= "deleteTodo(i)">delete</i>
+                          </span>
+                </mat-list-option>
+              </mat-selection-list>
+            </mat-card-content>
+      </mat-card>
   </div>
+  <br>
+  <br>
+  <br>
+  
+    <div fxLayoutAlign= "center center" fxLayoutGap="15px">
+      <mat-list>
+        <h3 matSubheader>TodoList Details</h3>
+          <mat-list-item *ngIf="selectedTodo$ | async; let selectedTodo">{{selectedTodo.content}}</mat-list-item>
+            <mat-divider></mat-divider>
+     </mat-list>
+    </div> 
