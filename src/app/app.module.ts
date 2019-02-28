@@ -1,8 +1,9 @@
+import { InMemoryDataService } from './shared/mock/in-memory-data.service';
+import { environment } from './../environments/environment';
 import { TodosEffects } from './shared/store/todos.effects';
 import { reducers } from './shared/store/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './shared/services/api.service';
-import { HttpModule } from '@angular/http'
 import { LayoutModule } from './shared/modules/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '../../node_modules/@ngrx/effects';
 import { RouterModule } from '../../node_modules/@angular/router';
 import { StoreRouterConnectingModule } from '../../node_modules/@ngrx/router-store';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from '../../node_modules/angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,13 @@ import { StoreRouterConnectingModule } from '../../node_modules/@ngrx/router-sto
     FormsModule,
     LayoutModule,
     CoreModule,
-    HttpModule,
+    HttpClientModule,
+
+    environment.useHttpMock
+      ? HttpClientInMemoryWebApiModule.forRoot(
+        InMemoryDataService, { delay: 1000, post204: false, put204: false }
+      )
+      : [],
 
     StoreModule.forRoot(reducers), 
      StoreDevtoolsModule.instrument({

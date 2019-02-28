@@ -2,38 +2,29 @@ import { Todo } from '../models/todo.model';
 import { Injectable } from '@angular/core';
 import { Observable, timer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { HttpClient } from '../../../../node_modules/@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public getTodos(): Observable<Todo[]> {
-    return timer(2000).pipe(
-                map( () => [
-            {
-                id: "1",
-                content: 'manger une pizza',
-                done: false,
-                description: "uummm c'est bon!!" 
-            },
-            
-            {
-                id: "2",
-                content: 'Aller à la plage',
-                done: false,
-                description: "bon!!" 
-            },
+  private apiUrl = 'api/todos';
+  
 
-            {
-                id: "3",
-                content: 'Faire du ski',
-                done: false,
-                description: "c'est bon!!" 
-            }
-        ])
-    )
+  getAllTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.apiUrl);
   }
+
+   /* createTodo(todo: Todo): Observable<Todo> {
+    return this.http.post(`${this.apiUrl}/todos/`, todo) 
+    .map(response => response.json() as Todo)   
+  } */
+
+  /* deleteTodo(index: number): Observable <any>  {
+    return this.http.delete(`${this.apiUrl}/todos/${index}`);         
+  }  */
+        
 }

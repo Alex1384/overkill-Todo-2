@@ -2,7 +2,7 @@ export class Todo {
     id?: string;
     content: string;
     done: boolean;
-    description?: string;
+    description: string;
 
 
     constructor(values: Object = {}) {

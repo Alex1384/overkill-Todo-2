@@ -18,12 +18,12 @@
                            *ngFor= "let todo of todos$ | async; let i = index" 
                            (click)="toggleTodo(i)">
                           <span fxLayout="row" >{{todo.content}}
-                              <i class= "material-icons" (click)= "deleteTodo(i)">delete</i>
+                          <i  class= "material-icons" (click)= "deleteTodo(i)">delete</i>
                           </span>
                 </mat-list-option>
               </mat-selection-list>
             </mat-card-content>
-      </mat-card>
+        </mat-card>
   </div>
   <br>
   <br>
@@ -32,7 +32,7 @@
     <div fxLayoutAlign= "center center" fxLayoutGap="15px">
       <mat-list>
         <h3 matSubheader>TodoList Details</h3>
-          <mat-list-item *ngIf="selectedTodo$ | async; let selectedTodo">{{selectedTodo.content}}</mat-list-item>
+          <mat-list-item *ngIf="selectedTodo$ | async; let selectedTodo">{{selectedTodo.description}}</mat-list-item>
             <mat-divider></mat-divider>
      </mat-list>
-    </div> 
+    </div>  
