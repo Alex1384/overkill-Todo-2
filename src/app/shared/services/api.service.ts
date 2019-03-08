@@ -18,13 +18,14 @@ export class ApiService {
     return this.http.get<Todo[]>(this.apiUrl);
   }
 
-   /* createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post(`${this.apiUrl}/todos/`, todo) 
-    .map(response => response.json() as Todo)   
-  } */
+  createTodo(todo: Todo): Observable<Todo> {
+    console.log('create', todo)
+    return this.http.post<Todo>(`${this.apiUrl}/todos/`, todo);
+  }
 
-  /* deleteTodo(index: number): Observable <any>  {
-    return this.http.delete(`${this.apiUrl}/todos/${index}`);         
-  }  */
+  deleteTodo(action: any): Observable <any>  {
+    console.log('action', action)
+    return this.http.delete(`${this.apiUrl}/todos/${action.payload}`);
+  }
         
 }

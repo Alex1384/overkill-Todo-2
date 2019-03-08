@@ -16,9 +16,11 @@ import { StoreModule } from '../../node_modules/@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '../../node_modules/@ngrx/effects';
 import { RouterModule } from '../../node_modules/@angular/router';
-import { StoreRouterConnectingModule } from '../../node_modules/@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from '../../node_modules/angular-in-memory-web-api';
+import { MyRouterStateSelector } from './shared/store/selector';
+import { MyRouterStateSerializer } from './shared/store/router.helper';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,7 @@ import { HttpClientInMemoryWebApiModule } from '../../node_modules/angular-in-me
     
   
   ],
-  providers: [ApiService],
+  providers: [ApiService, { provide: RouterStateSerializer, useClass: MyRouterStateSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

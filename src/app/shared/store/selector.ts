@@ -15,13 +15,16 @@ import { RouterStateUrl }  from './router.helper';
 
   export const MyRouterStateSelector = createSelector(
     routerSelector,
-    routerState => routerState.state
+    routerState => routerState && routerState.state
   );
 
   export const selectedTodoSelector = createSelector(
     todoListSelector,
     MyRouterStateSelector,
     (todos: Todo[], routerState: RouterStateUrl) => {
+      if (!routerState) {
+        return null;
+      }
       const todoId = routerState.params.id;
       if (todoId && todos) {
         return todos.find(t => t.id === todoId);

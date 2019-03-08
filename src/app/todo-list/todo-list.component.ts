@@ -36,8 +36,8 @@ export class TodoListComponent implements OnInit {
     this.content = "";
   }
 
-  public deleteTodo(index: number) {
-    this.store.dispatch(new todosAction.DeleteTodo(index));
+  public deleteTodo(id: string) {
+    this.store.dispatch(new todosAction.DeleteTodo(id));
   }
 
 }

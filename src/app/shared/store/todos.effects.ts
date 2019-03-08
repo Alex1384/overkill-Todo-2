@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { FETCH_TODO, FetchTodo, FetchTodoSuccess, FetchTodoError, TODO_CREATE, CreateTodo, TODO_DELETE, DeleteTodo } from './todos.action';
+import { FETCH_TODO, FetchTodo, FetchTodoSuccess, FetchTodoError, TODO_CREATE, CreateTodo, TODO_DELETE, DeleteTodo, CreateTodoSuccess, CreateTodoError, DeleteTodoSuccess, DeleteTodoError } from './todos.action';
 import { ApiService } from '../services/api.service';
 import { Todo } from '../models/todo.model';
 
@@ -20,20 +20,28 @@ export class TodosEffects {
     catchError((err: any) => of(new FetchTodoError(err)))
   );
 
-  /*@Effect()
+  @Effect()
    createTodo$: Observable<Action> = this.actions$.pipe(
     ofType(TODO_CREATE),
-    switchMap((createTodo: CreateTodo) => this.apiService.createTodo(todos: Todo),
-    map((todos: Todo[]) => new FetchTodoSuccess(todos)),
-   
-  ); */
+    switchMap((todo: Todo) => this.apiService.createTodo(todo)
+      .pipe(
+        map((action: any) => new CreateTodoSuccess(action.payload)),
+        catchError((error) => {
+          return of(new CreateTodoError({ error: error }));
+        }))
+    )
+  );
 
-  /* @Effect()
+  @Effect()
   deleteTodo$: Observable<Action> = this.actions$.pipe(
     ofType(TODO_DELETE),
-    switchMap((deleteTodo: DeleteTodo) => this.apiService.deleteTodo(this.id)),
-    map((todos: Todo[]) => new FetchTodoSuccess(todos)),
-    
-  );  */
+    switchMap((action: any) => this.apiService.deleteTodo(action.payload)
+      .pipe(
+        map(() => new DeleteTodoSuccess(action.payload)),
+        catchError((error) => {
+          return of(new DeleteTodoError({ error: error }));
+        }))
+    )
+  );
   constructor(private apiService: ApiService, private actions$: Actions) {}
 }

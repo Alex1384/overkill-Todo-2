@@ -41,18 +41,22 @@ import * as todosAction from './todos.action'
                 loaded: true,
                 error: action.payload
             };
-        
-        case todosAction.TODO_CREATE:
-        return {
-            ...state,
-            data: [...state.data, action.payload]
-        };
-        
-        case todosAction.TODO_DELETE :
+            
+             
+        case todosAction.TODO_CREATE_SUCCESS:
             return {
                 ...state,
-                data: state.data.filter((t,i) => i !== action.payload)
-        };
+                data: [...state.data, action.payload]
+            };
+        
+    
+
+        case todosAction.TODO_DELETE_SUCCESS :
+            return {
+                ...state,
+                data: state.data.filter(todo => todo.id !== action.payload)
+            };
+
         
         case todosAction.TODO_TOGGLE :
             const selectedTodo = state.data[action.payload];
