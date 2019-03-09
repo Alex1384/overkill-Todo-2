@@ -1,8 +1,7 @@
 import { Todo } from '../models/todo.model';
 import { Injectable } from '@angular/core';
-import { Observable, timer, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators'
-import { HttpClient } from '../../../../node_modules/@angular/common/http';
+import { Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +26,5 @@ export class ApiService {
     console.log('action', action)
     return this.http.delete(`${this.apiUrl}/todos/${action.payload}`);
   }
-        
+
 }

@@ -10,38 +10,38 @@ import { Todo } from '../models/todo.model';
 @Injectable()
 export class TodosEffects {
 
-    id: number;
+  id: number;
   
-@Effect()
-  fetchTodo$: Observable<Action> = this.actions$.pipe(
-    ofType(FETCH_TODO),
-    switchMap((fetchTodo: FetchTodo) => this.apiService.getAllTodos()),
-    map((todos: Todo[]) => new FetchTodoSuccess(todos)),
-    catchError((err: any) => of(new FetchTodoError(err)))
-  );
-
   @Effect()
-   createTodo$: Observable<Action> = this.actions$.pipe(
-    ofType(TODO_CREATE),
-    switchMap((todo: Todo) => this.apiService.createTodo(todo)
-      .pipe(
-        map((action: any) => new CreateTodoSuccess(action.payload)),
-        catchError((error) => {
-          return of(new CreateTodoError({ error: error }));
-        }))
-    )
-  );
-
-  @Effect()
-  deleteTodo$: Observable<Action> = this.actions$.pipe(
-    ofType(TODO_DELETE),
-    switchMap((action: any) => this.apiService.deleteTodo(action.payload)
-      .pipe(
-        map(() => new DeleteTodoSuccess(action.payload)),
-        catchError((error) => {
-          return of(new DeleteTodoError({ error: error }));
-        }))
-    )
-  );
-  constructor(private apiService: ApiService, private actions$: Actions) {}
-}
+    fetchTodo$: Observable<Action> = this.actions$.pipe(
+      ofType(FETCH_TODO),
+      switchMap((fetchTodo: FetchTodo) => this.apiService.getAllTodos()),
+      map((todos: Todo[]) => new FetchTodoSuccess(todos)),
+      catchError((err: any) => of(new FetchTodoError(err)))
+    );
+  
+    @Effect()
+     createTodo$: Observable<Action> = this.actions$.pipe(
+      ofType(TODO_CREATE),
+      switchMap((todo: Todo) => this.apiService.createTodo(todo)
+        .pipe(
+          map((action: any) => new CreateTodoSuccess(action.payload)),
+          catchError((error) => {
+            return of(new CreateTodoError({ error: error }));
+          }))
+      )
+    );
+  
+    @Effect()
+    deleteTodo$: Observable<Action> = this.actions$.pipe(
+      ofType(TODO_DELETE),
+      switchMap((action: any) => this.apiService.deleteTodo(action.payload)
+        .pipe(
+          map(() => new DeleteTodoSuccess(action.payload)),
+          catchError((error) => {
+            return of(new DeleteTodoError({ error: error }));
+          }))
+      )
+    );
+    constructor(private apiService: ApiService, private actions$: Actions) {}
+  }

@@ -12,32 +12,34 @@ import { v4 as uuid } from 'uuid';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
 
-  public todos$: Observable<Todo[]> = this.store.pipe(select(todoListSelector));
+  export class TodoListComponent implements OnInit {
+
+    public todos$: Observable<Todo[]> = this.store.pipe(select(todoListSelector));
+    
+    public selectedTodo$: Observable<Todo> = this.store.pipe(select(selectedTodoSelector));
+    constructor(private store: Store<State>) { }
   
-  public selectedTodo$: Observable<Todo> = this.store.pipe(select(selectedTodoSelector));
-  constructor(private store: Store<State>) { }
-
-  public selectedTodo: Todo;
-  public content: string;
-  public description: string;
-
-  ngOnInit() {
-    this.store.dispatch(new todosAction.FetchTodo());
+    public selectedTodo: Todo;
+    public content: string;
+    public description: string;
+  
+    ngOnInit() {
+      this.store.dispatch(new todosAction.FetchTodo());
+    }
+  
+    public toggleTodo(index: number) {
+      this.store.dispatch(new todosAction.ToggleTodo(index));
+    }
+  
+    public addTodo() {
+      this.store.dispatch(new todosAction.CreateTodo({ content: this.content, done: false, id:uuid(),description: this.description}));
+      this.content = "";
+    }
+  
+    public deleteTodo(id: string) {
+      this.store.dispatch(new todosAction.DeleteTodo(id));
+    }
+  
   }
-
-  public toggleTodo(index: number) {
-    this.store.dispatch(new todosAction.ToggleTodo(index));
-  }
-
-  public addTodo() {
-    this.store.dispatch(new todosAction.CreateTodo({ content: this.content, done: false, id:uuid(),description: this.description}));
-    this.content = "";
-  }
-
-  public deleteTodo(id: string) {
-    this.store.dispatch(new todosAction.DeleteTodo(id));
-  }
-
-}
+  

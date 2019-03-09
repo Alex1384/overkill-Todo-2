@@ -13,21 +13,6 @@ export const TODO_DELETE_SUCCESS = '[todo] delete success';
 export const TODO_DELETE_ERROR = '[todo] delete error';
 export const TODO_TOGGLE = '[todo] toggle';
 
-
-export class FetchTodo implements Action {
-  readonly type = FETCH_TODO;
-}
-
-export class FetchTodoSuccess implements Action {
-  readonly type = FETCH_TODO_SUCCESS;
-  constructor(public payload: Todo[]){}
-}
-
-export class FetchTodoError implements Action {
-  readonly type = FETCH_TODO_ERROR;
-  constructor(public payload: any) {}
-}
-
 export class CreateTodo implements Action {
   readonly type = TODO_CREATE;
   constructor(public payload: Todo) {}
@@ -63,7 +48,19 @@ export class ToggleTodo implements Action {
   constructor(public payload: number) {}
 }
 
+export class FetchTodo implements Action {
+  readonly type = FETCH_TODO;
+}
 
+export class FetchTodoSuccess implements Action {
+  readonly type = FETCH_TODO_SUCCESS
+  constructor(public payload: Todo[]){}
+}
+
+export class FetchTodoError implements Action {
+  readonly type = FETCH_TODO_ERROR;
+  constructor(public payload: any) {}
+}
 
 export type TodosActionType = CreateTodo |
                               CreateTodoSuccess |
