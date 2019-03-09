@@ -12,14 +12,13 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@angular/flex-layout';
-import { StoreModule } from '../../node_modules/@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '../../node_modules/@ngrx/effects';
-import { RouterModule } from '../../node_modules/@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { RouterModule } from '@angular/router';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from '../../node_modules/angular-in-memory-web-api';
-import { MyRouterStateSelector } from './shared/store/selector';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MyRouterStateSerializer } from './shared/store/router.helper';
 
 @NgModule({

@@ -3,7 +3,7 @@ import { Todo } from './../shared/models/todo.model';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import * as todosAction from '../shared/store/todos.action'
-import { Store, select } from '../../../node_modules/@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { State } from '../shared/store';
 import { v4 as uuid } from 'uuid';
 
