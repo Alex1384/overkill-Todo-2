@@ -40,7 +40,7 @@ import { MyRouterStateSerializer } from './shared/store/router.helper';
       )
       : [],
 
-    StoreModule.forRoot(reducers), 
+    StoreModule.forRoot(reducers),
      StoreDevtoolsModule.instrument({
       name: 'to do'
     }),
@@ -59,8 +59,8 @@ import { MyRouterStateSerializer } from './shared/store/router.helper';
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router'
     })
-    
-  
+
+
   ],
   providers: [ApiService, { provide: RouterStateSerializer, useClass: MyRouterStateSerializer }],
   bootstrap: [AppComponent]

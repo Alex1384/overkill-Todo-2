@@ -4,7 +4,7 @@ import { Todo } from '../models/todo.model';
 
 export const FETCH_TODO = '[todo] fetch';
 export const FETCH_TODO_SUCCESS = '[todo] fetch success';
-export const FETCH_TODO_ERROR ='[todo] fetch error'
+export const FETCH_TODO_ERROR = '[todo] fetch error';
 export const TODO_CREATE = '[todo] create';
 export const TODO_CREATE_ERROR = '[todo] create error';
 export const TODO_CREATE_SUCCESS = '[todo] create success';
@@ -19,8 +19,8 @@ export class CreateTodo implements Action {
 }
 
 export class CreateTodoSuccess implements Action {
-  readonly type = TODO_CREATE_SUCCESS
-  constructor(public payload: Todo){}
+  readonly type = TODO_CREATE_SUCCESS;
+  constructor(public payload: Todo) {}
 }
 
 export class CreateTodoError implements Action {
@@ -53,8 +53,8 @@ export class FetchTodo implements Action {
 }
 
 export class FetchTodoSuccess implements Action {
-  readonly type = FETCH_TODO_SUCCESS
-  constructor(public payload: Todo[]){}
+  readonly type = FETCH_TODO_SUCCESS;
+  constructor(public payload: Todo[]) {}
 }
 
 export class FetchTodoError implements Action {

@@ -2,7 +2,7 @@ import { Todo } from '../models/todo.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TodoState } from './todos.reducers';
 import * as routerReducer from '@ngrx/router-store';
-import { RouterStateUrl }  from './router.helper';
+import { RouterStateUrl } from './router.helper';
 
 
 export const todosSelector = createFeatureSelector<TodoState>('todos');
@@ -27,6 +27,8 @@ export const selectedTodoSelector = createSelector(
     }
     const todoId = routerState.params.id;
     if (todoId && todos) {
+
+      // tslint:disable-next-line:triple-equals
       return todos.find(t => t.id == todoId);
     } else {
       return null;

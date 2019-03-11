@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResponseOptions,InMemoryDbService } from 'angular-in-memory-web-api';
+import { ResponseOptions, InMemoryDbService } from 'angular-in-memory-web-api';
 
 
 @Injectable({
@@ -31,7 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         'id': 4,
         'done': false,
-        'content':' Add a new TODO',
+        'content': 'Add a new TODO',
         'description': `As a user I would like to add a new todo in my list`
       }
     ];
