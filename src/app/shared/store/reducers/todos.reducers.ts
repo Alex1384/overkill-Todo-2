@@ -1,9 +1,9 @@
-import { Todo } from '../models/todo.model';
-import * as todosAction from './todos.action';
+import { Todo } from '../../models/todo.model';
+import * as todosAction from '../../store/actions/todos.action';
 
 
 
-const initialState = {
+export const initialState = {
     data: null,
     loading: false,
     loaded: false,

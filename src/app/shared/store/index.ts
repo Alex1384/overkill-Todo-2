@@ -1,4 +1,4 @@
-import * as todosReducer from './todos.reducers';
+import * as todosReducer from './../store/reducers/todos.reducers';
 import { ActionReducerMap } from '@ngrx/store';
 import * as routerReducer from '@ngrx/router-store';
 import { RouterStateUrl} from './router.helper';

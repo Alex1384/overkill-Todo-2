@@ -1,8 +1,8 @@
-import { todoListSelector, selectedTodoSelector } from './../shared/store/selector';
+import { todoListSelector, selectedTodoSelector } from '../shared/store/selectors/selector';
 import { Todo } from './../shared/models/todo.model';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import * as todosAction from '../shared/store/todos.action';
+import * as todosAction from '../shared/store/actions/todos.action';
 import { Store, select } from '@ngrx/store';
 import { State } from '../shared/store';
 import { v4 as uuid } from 'uuid';

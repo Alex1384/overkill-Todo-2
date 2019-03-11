@@ -1,8 +1,8 @@
-import { Todo } from '../models/todo.model';
+import { TodoState } from './../reducers/todos.reducers';
+import { Todo } from '../../models/todo.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { TodoState } from './todos.reducers';
 import * as routerReducer from '@ngrx/router-store';
-import { RouterStateUrl } from './router.helper';
+import { RouterStateUrl } from '../router.helper';
 
 
 export const todosSelector = createFeatureSelector<TodoState>('todos');

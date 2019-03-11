@@ -13,9 +13,9 @@ import {
   CreateTodoSuccess,
   CreateTodoError,
   DeleteTodoSuccess,
-  DeleteTodoError } from './todos.action';
-import { ApiService } from '../services/api.service';
-import { Todo } from '../models/todo.model';
+  DeleteTodoError } from '../../store/actions/todos.action';
+import { ApiService } from '../../services/api.service';
+import { Todo } from '../../models/todo.model';
 
 @Injectable()
 export class TodosEffects {

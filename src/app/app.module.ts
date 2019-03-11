@@ -1,6 +1,6 @@
 import { InMemoryDataService } from './shared/mock/in-memory-data.service';
 import { environment } from './../environments/environment';
-import { TodosEffects } from './shared/store/todos.effects';
+import { TodosEffects } from './shared/store/effects/todos.effects';
 import { reducers } from './shared/store/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './shared/services/api.service';
