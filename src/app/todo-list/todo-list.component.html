@@ -1,7 +1,3 @@
-<mat-toolbar color="primary" fxLayout= "row" fxLayoutAlign ="start center" FxLayoutGap= "15px">
-  <span fxFlex= "auto">OverKill Todos</span>
-  </mat-toolbar>
-
 <div fxLayoutAlign= "center center" fxLayoutGap="15px">
       <mat-card>
         <mat-card-header fxLayoutAlign = "center center">ToDoList</mat-card-header>
@@ -25,14 +21,6 @@
             </mat-card-content>
         </mat-card>
   </div>
-  <br>
-  <br>
-  <br>
   
-    <div fxLayoutAlign= "center center" fxLayoutGap="15px">
-      <mat-list>
-        <h3 matSubheader>TodoList Details</h3>
-          <mat-list-item *ngIf="selectedTodo$ | async; let selectedTodo">{{selectedTodo.description}}</mat-list-item>
-            <mat-divider></mat-divider>
-     </mat-list>
-    </div>  
+
+  <app-todo-details></app-todo-details>

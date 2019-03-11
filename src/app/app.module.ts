@@ -20,11 +20,13 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MyRouterStateSerializer } from './shared/store/router.helper';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoDetailsComponent
   ],
   imports: [
     BrowserModule,

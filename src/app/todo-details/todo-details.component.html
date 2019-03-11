@@ -1,0 +1,9 @@
+
+  
+    <div fxLayoutAlign= "center center" fxLayoutGap="15px">
+      <mat-list>
+        <h3 matSubheader>TodoList Details</h3>
+          <mat-list-item *ngIf="selectedTodo$ | async; let selectedTodo">{{selectedTodo.description}}</mat-list-item>
+            <mat-divider></mat-divider>
+     </mat-list>
+    </div>  
